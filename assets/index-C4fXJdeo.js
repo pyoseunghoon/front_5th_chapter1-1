@@ -1,8 +1,8 @@
-(function(){const l=document.createElement("link").relList;if(l&&l.supports&&l.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))a(t);new MutationObserver(t=>{for(const s of t)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function o(t){const s={};return t.integrity&&(s.integrity=t.integrity),t.referrerPolicy&&(s.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?s.credentials="include":t.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function a(t){if(t.ep)return;t.ep=!0;const s=o(t);fetch(t.href,s)}})();const m={active:"text-blue-600 font-bold",inactive:"text-gray-600"},h=[["홍길동","5분 전","오늘 날씨가 정말 좋네요. 다들 좋은 하루 보내세요!"],["김철수","15분 전","새로운 프로젝트를 시작했어요. 열심히 코딩 중입니다!"],["이영희","30분 전","오늘 점심 메뉴 추천 받습니다. 뭐가 좋을까요?"],["박민수","1시간 전","주말에 등산 가실 분 계신가요? 함께 가요!"],["정수연","2시간 전","새로 나온 영화 재미있대요. 같이 보러 갈 사람?"]],d={footer:()=>`
+(function(){const l=document.createElement("link").relList;if(l&&l.supports&&l.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))r(t);new MutationObserver(t=>{for(const s of t)if(s.type==="childList")for(const n of s.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&r(n)}).observe(document,{childList:!0,subtree:!0});function o(t){const s={};return t.integrity&&(s.integrity=t.integrity),t.referrerPolicy&&(s.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?s.credentials="include":t.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function r(t){if(t.ep)return;t.ep=!0;const s=o(t);fetch(t.href,s)}})();const a="/front_5th_chapter1-1/",f={active:"text-blue-600 font-bold",inactive:"text-gray-600"},g=[["홍길동","5분 전","오늘 날씨가 정말 좋네요. 다들 좋은 하루 보내세요!"],["김철수","15분 전","새로운 프로젝트를 시작했어요. 열심히 코딩 중입니다!"],["이영희","30분 전","오늘 점심 메뉴 추천 받습니다. 뭐가 좋을까요?"],["박민수","1시간 전","주말에 등산 가실 분 계신가요? 함께 가요!"],["정수연","2시간 전","새로 나온 영화 재미있대요. 같이 보러 갈 사람?"]],c={footer:()=>`
             <footer class="bg-gray-200 p-4 text-center">
               <p>&copy; 2024 항해플러스. All rights reserved.</p>
             </footer>
-    `,header:(e="/")=>{const l=localStorage.getItem("user"),o=a=>e===a?m.active:m.inactive;return l?`
+    `,header:(e="/")=>{const l=localStorage.getItem("user"),o=r=>e===r?f.active:f.inactive;return l?`
               <header class="bg-blue-600 text-white p-4 sticky top-0">
                   <h1 class="text-2xl font-bold">항해플러스</h1>
               </header>
@@ -23,26 +23,26 @@
                       <li><a href="/login" class="text-gray-600">로그인</a></li>
                   </ul>
               </nav>
-      `}},c={homePage:()=>`
+      `}},u={homePage:()=>`
             <div class="bg-gray-100 min-h-screen flex justify-center">
                 <div class="max-w-md w-full">
-                    ${d.header("/")}
+                    ${c.header("/")}
                     <main class="p-4">
                         <div class="mb-4 bg-white rounded-lg shadow p-4">
                             <textarea class="w-full p-2 border rounded" placeholder="무슨 생각을 하고 계신가요?"></textarea>
                             <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded">게시</button>
                         </div>
                         <div class="space-y-4">
-                            ${h.map(([e,l,o])=>g.PostItem(e,l,o)).join("")}
+                            ${g.map(([e,l,o])=>p.PostItem(e,l,o)).join("")}
                         </div>
                     </main>
-                    ${d.footer()}
+                    ${c.footer()}
                 </div>
             </div>
     `,profilePage:()=>{const e=JSON.parse(localStorage.getItem("user")||"{}");return`
             <div class="bg-gray-100 min-h-screen flex justify-center">
                 <div class="max-w-md w-full">
-                    ${d.header("/profile")}
+                    ${c.header("/profile")}
                     <main class="p-4">
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">내 프로필</h2>
@@ -63,7 +63,7 @@
                             </form>
                         </div>
                     </main>
-                    ${d.footer()}
+                    ${c.footer()}
                 </div>
             </div>
     `},loginPage:()=>`
@@ -98,7 +98,7 @@
                     <a href="/" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">홈으로 돌아가기</a>
                 </div>
             </main>
-    `},g={PostItem:(e,l,o)=>`
+    `},p={PostItem:(e,l,o)=>`
             <div class="bg-white rounded-lg shadow p-4">
                 <div class="flex items-center mb-2">
                     <img src="https://placehold.co/40" alt="프로필" class="rounded-full mr-2">
@@ -114,4 +114,4 @@
                     <button>공유</button>
                 </div>
             </div>
-    `},f={"/":c.homePage,"/login":c.loginPage,"/profile":c.profilePage};function n(){return!!location.hash}function p(){return!location.hash&&location.pathname==="/index.hash.html"&&history.pushState({},"","/index.hash.html#/"),n()?v(location.hash):location.pathname}function v(e){return e.substr(1,e.length)}function x(e){return"#"+e}function u(){let e=p();if(e==="/profile"&&!localStorage.getItem("user"))return r(n()?"hash":"basic","/login");if(e==="/login"&&localStorage.getItem("user"))return r(n()?"hash":"basic","/");const l=f[e]?f[e]():c.notFoundPage();document.getElementById("root").innerHTML=l,y()}function r(e,l){e==="hash"?location.hash=x(l):(history.pushState({},"",l),u())}function y(){const e=document.getElementById("login-form");e&&e.addEventListener("submit",t=>{t.preventDefault();const s=document.getElementById("username").value.trim();localStorage.setItem("user",JSON.stringify({username:s,email:"",bio:""})),r(n()?"hash":"basic","/profile")});const l=document.getElementById("logout");l&&l.addEventListener("click",t=>{t.preventDefault(),localStorage.removeItem("user"),r(n()?"hash":"basic","/login")});const o=document.getElementById("profile-form");o&&o.addEventListener("submit",t=>{t.preventDefault();const s=document.getElementById("username").value,i=document.getElementById("email").value,b=document.getElementById("bio").value;localStorage.setItem("user",JSON.stringify({username:s,email:i,bio:b})),alert("프로필이 업데이트되었습니다."),r(n()?"hash":"basic","/profile")});const a=document.querySelector("nav");a&&a.addEventListener("click",t=>{if(t.preventDefault(),t.target&&t.target.nodeName==="A"){const s=t.target.closest("a");r(n()?"hash":"basic",s.getAttribute("href"))}})}window.addEventListener("popstate",()=>{u()});window.addEventListener("hashchange",()=>{u()});window.addEventListener("DOMContentLoaded",()=>{u()});
+    `},b={[a]:u.homePage,[`${a}login`]:u.loginPage,[`${a}profile`]:u.profilePage};function i(){return!!location.hash}function v(){return!location.hash&&location.pathname==="/index.hash.html"&&history.pushState({},"",`/index.hash.html#${a}`),i()?x(location.hash):location.pathname}function x(e){return e.substr(1,e.length)}function y(e){return"#"+e}function m(){let e=v();if(e===`${a}profile`&&!localStorage.getItem("user"))return d(i()?"hash":"basic",`${a}login`);if(e===`${a}login`&&localStorage.getItem("user"))return d(i()?"hash":"basic",`${a}`);const l=b[e]?b[e]():u.notFoundPage();document.getElementById("root").innerHTML=l,w()}function d(e,l){e==="hash"?location.hash=y(l):(history.pushState({},"",l),m())}function w(){const e=document.getElementById("login-form");e&&e.addEventListener("submit",t=>{t.preventDefault();const s=document.getElementById("username").value.trim();localStorage.setItem("user",JSON.stringify({username:s,email:"",bio:""})),d(i()?"hash":"basic",`${a}profile`)});const l=document.getElementById("logout");l&&l.addEventListener("click",t=>{t.preventDefault(),localStorage.removeItem("user"),d(i()?"hash":"basic",`${a}login`)});const o=document.getElementById("profile-form");o&&o.addEventListener("submit",t=>{t.preventDefault();const s=document.getElementById("username").value,n=document.getElementById("email").value,h=document.getElementById("bio").value;localStorage.setItem("user",JSON.stringify({username:s,email:n,bio:h})),alert("프로필이 업데이트되었습니다."),d(i()?"hash":"basic",`${a}profile`)});const r=document.querySelector("nav");r&&r.addEventListener("click",t=>{if(t.preventDefault(),t.target&&t.target.nodeName==="A"){const s=t.target.closest("a"),n=s.getAttribute("href").substring(1,s.getAttribute("href").length);d(i()?"hash":"basic",`${a}${n}`)}})}window.addEventListener("popstate",()=>{m()});window.addEventListener("hashchange",()=>{m()});window.addEventListener("DOMContentLoaded",()=>{m()});
